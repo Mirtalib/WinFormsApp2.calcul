@@ -8,10 +8,6 @@ namespace WinFormsApp2
         public Questionnaire()
         {
             InitializeComponent();
-
-
-
-
         }
 
         
@@ -23,57 +19,78 @@ namespace WinFormsApp2
             
           
             
-            if (!string.IsNullOrWhiteSpace(textBoxNeme.Text))
+            if (!string.IsNullOrWhiteSpace(textBoxNeme.Text) && textBoxNeme.Text.Length > 3)
                 users.Name = textBoxNeme.Text;
             else
-                MessageBox.Show("Enter Name");
+            {
+                MessageBox.Show("Enter Name OR It must be at least 3 characters");
+                return;
+            }
             
-            if (!string.IsNullOrWhiteSpace(textBoxSurname.Text))
+            if (!string.IsNullOrWhiteSpace(textBoxSurname.Text) && textBoxSurname.Text.Length > 3)
                 users.SurName = textBoxSurname.Text;
             else
-                MessageBox.Show("Enter SurName");
+            {
+                MessageBox.Show("Enter SurName OR It must be at least 3 characters");
+                return;
+            }
             
-            if (!string.IsNullOrWhiteSpace(textBoxFatherName.Text))
+            if (!string.IsNullOrWhiteSpace(textBoxFatherName.Text) && textBoxFatherName.Text.Length > 3)
                 users.FatherName = textBoxFatherName.Text;
             else
-                MessageBox.Show("Enter Father Name");
+            {
+                MessageBox.Show("Enter Father Name OR It must be at least 3 characters");
+                return;
+            }
             
-            if (!string.IsNullOrWhiteSpace(textBoxCountry.Text))
+            if (!string.IsNullOrWhiteSpace(textBoxCountry.Text) && textBoxCountry.Text.Length > 3)
                 users.Country = textBoxCountry.Text;
             else
-                MessageBox.Show("Enter Country");
+            {
+                MessageBox.Show("Enter Country OR It must be at least 3 characters");
+                return;
+            }
             
-            if (!string.IsNullOrWhiteSpace(textBoxCity.Text))
+            if (!string.IsNullOrWhiteSpace(textBoxCity.Text) && textBoxCity.Text.Length > 3)
                 users.City = textBoxCity.Text;
             else
-                MessageBox.Show("Enter City");
+            {
+                MessageBox.Show("Enter City OR It must be at least 3 characters");
+                return;
+            }
             
             if (!string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text))
                 users.Phone = textBoxPhoneNumber.Text;
             else
-                MessageBox.Show("Enter Phone");
+            {
+                MessageBox.Show("Enter Phone OR It must be at least 3 characters");
+                return;
+            }
             
             if (radioButtonMen.Checked)
                 users.Gender = "Men" ;
             else if (radioButtonWomen.Checked)
                 users.Gender = "Women";
             else
+            {
                 MessageBox.Show("Enter Gender");
+                return;
+            }
 
             users.DateTime = dateTimePicker1.Value;
 
-            if(!string.IsNullOrWhiteSpace(textBoxNeme.Text )&&
-                !string.IsNullOrWhiteSpace(textBoxSurname.Text)&&
-                !string.IsNullOrWhiteSpace(textBoxFatherName.Text)&&
-                !string.IsNullOrWhiteSpace(textBoxCountry.Text) &&
-                !string.IsNullOrWhiteSpace(textBoxCity.Text) &&
-                !string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) &&
-                (radioButtonMen.Checked != false || radioButtonWomen.Checked != false))
-            {
+            // if(!string.IsNullOrWhiteSpace(textBoxNeme.Text )&&
+            //     !string.IsNullOrWhiteSpace(textBoxSurname.Text)&&
+            //     !string.IsNullOrWhiteSpace(textBoxFatherName.Text)&&
+            //     !string.IsNullOrWhiteSpace(textBoxCountry.Text) &&
+            //     !string.IsNullOrWhiteSpace(textBoxCity.Text) &&
+            //     !string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) &&
+            //     (radioButtonMen.Checked != false || radioButtonWomen.Checked != false))
+            // {
 
                 var jsonString = JsonConvert.SerializeObject(users, Newtonsoft.Json.Formatting.Indented);
                 File.WriteAllText(users.Name + ".json", jsonString);
-            }
+            // }
 
         }
 
