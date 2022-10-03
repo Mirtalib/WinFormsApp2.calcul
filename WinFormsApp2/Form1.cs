@@ -79,18 +79,11 @@ namespace WinFormsApp2
 
             users.DateTime = dateTimePicker1.Value;
 
-            // if(!string.IsNullOrWhiteSpace(textBoxNeme.Text )&&
-            //     !string.IsNullOrWhiteSpace(textBoxSurname.Text)&&
-            //     !string.IsNullOrWhiteSpace(textBoxFatherName.Text)&&
-            //     !string.IsNullOrWhiteSpace(textBoxCountry.Text) &&
-            //     !string.IsNullOrWhiteSpace(textBoxCity.Text) &&
-            //     !string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text) &&
-            //     (radioButtonMen.Checked != false || radioButtonWomen.Checked != false))
-            // {
+
 
                 var jsonString = JsonConvert.SerializeObject(users, Newtonsoft.Json.Formatting.Indented);
                 File.WriteAllText(users.Name + ".json", jsonString);
-            // }
+           
 
         }
 
